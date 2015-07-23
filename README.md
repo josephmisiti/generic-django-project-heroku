@@ -97,3 +97,7 @@ Finally, sync your db on Heroku:
 heroku run python manage.py syncdb
 heroku run python manage.py migrate
 ```
+
+And you should be able to login to the admin panel:
+
+https://<HEROKU PROJECT NANE>.herokuapp.com/admin
