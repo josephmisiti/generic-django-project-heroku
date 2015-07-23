@@ -1,0 +1,14 @@
+DEBUG=False
+
+ADMINS = ( ('temp', 'temp@tmep.com'), )
+
+DATABASES = {
+    'default': {
+        'ENGINE'	: 'django.db.backends.postgresql_psycopg2',
+        'NAME'		: 'temp',
+        'USER'		: 'temp', 
+        'PASSWORD'	: 'temp', # change this unless your an IDIOT
+        'HOST'		: '127.0.0.1',
+        'PORT'		: '5432',
+    }
+}
