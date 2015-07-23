@@ -1,11 +1,11 @@
 DEBUG=True
 
-ADMINS = ( ('temp', 'temp@tmep.com'), )
+ADMINS = ( ('{{ cookiecutter.author_name }}', '{{ cookiecutter.email }}'), )
 
 DATABASES = {
     'default': {
         'ENGINE'	: 'django.db.backends.postgresql_psycopg2',
-        'NAME'		: 'temp',
+        'NAME'		: '{{ cookiecutter.project_name }}',
         'USER'		: '', 
         'PASSWORD'	: '',
         'HOST'		: '127.0.0.1',

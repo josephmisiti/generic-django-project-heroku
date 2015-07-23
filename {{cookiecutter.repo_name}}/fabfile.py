@@ -8,7 +8,7 @@ from fabric.contrib import django
 env.VENDOR_PATH					= "/home/ubuntu/code"
 env.BUILD_FOLDER				= "/home/ubuntu/build"
 env.PROJECT_PATH				= os.path.dirname(os.path.abspath(__file__))
-env.MAIN_PROJECT_PATH			= "/home/ubuntu/temp/"
+env.MAIN_PROJECT_PATH			= "/home/ubuntu/{{ cookiecutter.project_name }}/"
 env.BRANCH_NAME					= 'master'
 env.user						= 'ubuntu'
 env.key_filename				= '/Users/%s/.ssh/id_rsa' % getpass.getuser()
@@ -156,7 +156,7 @@ def config_nginx(restart=False):
 def compress_assets(bundle=False):
 	""" Use jammit to compress asset """
 	with cd(env.MAIN_PROJECT_PATH):
-		run('jammit -c assets.yml --base-url http://temp --output static')
+		run('jammit -c assets.yml --base-url http://{{ cookiecutter.project_name }} --output static')
 		print(cyan("building shit on server"))
 
 def transfer_assets():

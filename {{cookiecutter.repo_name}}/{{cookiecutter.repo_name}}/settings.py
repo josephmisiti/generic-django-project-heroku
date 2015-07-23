@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'temp.urls'
+ROOT_URLCONF = '{{ cookiecutter.project_name }}.urls'
 
-WSGI_APPLICATION = 'temp.wsgi.application'
+WSGI_APPLICATION = '{{ cookiecutter.project_name }}.wsgi.application'
 
 
 # Database
