@@ -1,5 +1,5 @@
-generic-django-project
-======================
+generic-django-project-heroku
+=============================
 
 Generic project directory structure for new django applications.
 
@@ -19,26 +19,12 @@ $ pip install cookiecutter
 Then execute the following command:
 
 ```
-$ cookiecutter https://github.com/josephmisiti/generic-django-project.git
+$ cookiecutter https://github.com/josephmisiti/generic-django-project-heroku.git
 ```
 
 #### Setting Up The Database
 
-I like to use postgres, so I suggest installing [PostGreApp](http://postgresapp.com/). Once that is installed,
-execute the following commands
-
-```
-$ createdb <DBNAME>
-```
-
-Then sync and execute migrations
-
-```
-$ python manage.py syncdb
-$ python manage.py migrate
-```
-
-Done! If you are not using OSX, you're on your own. It's pretty easy to install Postgres on UBUNTU (see fabfile.py), but I have no experience on Windows.
+TODO
 
 
 If you have any questions or what to help out, send a pull request or reach out at [@josephmisiti](http://www.twitter.com/josephmisiti)
