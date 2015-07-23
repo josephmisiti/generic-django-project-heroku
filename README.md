@@ -91,4 +91,9 @@ heroku buildpacks:set git://github.com/heroku/heroku-buildpack-python.git
 git push heroku master
 ```
 
+Finally, sync your db on Heroku:
 
+```
+heroku run python manage.py syncdb
+heroku run python manage.py migrate
+```
