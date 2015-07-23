@@ -1,8 +1,10 @@
-Django==1.7.2
+Django<1.8
 psycopg2
 boto
-Fabric
 django-tastypie
 
-# asset compression
-pyyaml
+
+# deployment
+django-pipeline==1.5.1
+whitenoise==2.0.1
+gunicorn
