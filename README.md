@@ -91,6 +91,39 @@ heroku buildpacks:set git://github.com/heroku/heroku-buildpack-python.git
 git push heroku master
 ```
 
+When you push, you should see Heroku detect your Python app, the output should look similiar to this
+
+```
+(bar)JOSEPH-MISITI:tester josephmisiti$ git push heroku master
+Counting objects: 61, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (47/47), done.
+Writing objects: 100% (61/61), 89.76 KiB | 0 bytes/s, done.
+Total 61 (delta 0), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Fetching custom git buildpack... done
+remote: -----> Python app detected
+remote: -----> Installing runtime (python-2.7.10)
+remote: -----> Installing dependencies with pip
+remote:        Collecting Django<1.8 (from -r requirements/common.txt (line 1))
+remote:          Downloading Django-1.7.9-py2.py3-none-any.whl (7.4MB)
+remote:        Collecting psycopg2==2.5.4 (from -r requirements/common.txt (line 2))
+remote:          Downloading psycopg2-2.5.4.tar.gz (682kB)
+remote:        Collecting django-model-utils==2.0.3 (from -r requirements/common.txt (line 3))
+remote:          Downloading django_model_utils-2.0.3-py2.py3-none-any.whl
+remote:        Collecting django-pgfields==1.4.4 (from -r requirements/common.txt (line 4))
+remote:          Downloading django-pgfields-1.4.4.tar.gz
+remote:        Collecting djorm-pgarray==1.0 (from -r requirements/common.txt (line 5))
+remote:          Downloading djorm-pgarray-1.0.tar.gz
+remote:        Collecting django-jsonfield (from -r requirements/common.txt (line 6))
+remote:          Downloading django-jsonfield-0.9.13.tar.gz
+remote:        Collecting django-localflavor==1.0 (from -r requirements/common.txt (line 7))
+remote:          Downloading django_localflavor-1.0-py2.py3-none-any.whl (1.6MB)
+```
+
+
 Finally, sync your db on Heroku:
 
 ```
