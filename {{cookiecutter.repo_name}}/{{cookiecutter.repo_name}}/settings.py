@@ -1,15 +1,6 @@
-"""
-Django settings for cookiecutter_django project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -36,7 +27,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'apps.static'
+    'apps.accounts',
+    'apps.core',
+    'apps.static',
+    
+    'pipeline' ,
+    'rest_framework',
+	'rest_framework.authtoken',  
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,10 +73,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+# static assets
+STATIC_ROOT = os.path.join(BASE_DIR, './staticfiles')
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, '{{cookiecutter.project_name}}', 'static'), )
+STATICFILES_STORAGE = 'apps.core.storage.GzipManifestPipelineStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+# pipeline & whitenoise
+WHITENOISE_ROOT = os.path.join(BASE_DIR, '{{cookiecutter.project_name}}', 'static_served_at_root')
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+PIPELINE_DISABLE_WRAPPER = True
+
 
 AUTH_USER_MODEL = 'accounts.User'
 
+# configs
+from .pipeline_config import *
 
+try:
+    from local_settings import *
+except Exception:
+    pass
 
-from local_settings import *
+# default db settings
+DATABASES={}
+DATABASES['default'] =  dj_database_url.config()
 
