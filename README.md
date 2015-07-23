@@ -36,6 +36,9 @@ Choose `Dev Plan` (free) and you should end up with a postgres database
 
 https://postgres.heroku.com/databases/heroku-postgres-da4ace14-heroku-postgresql-olive
 
+Dont worry about anything else, database_url_
+
+
 
 
 If you have any questions or what to help out, send a pull request or reach out at [@josephmisiti](http://www.twitter.com/josephmisiti)

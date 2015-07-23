@@ -18,4 +18,4 @@ django-impersonate
 # deployment
 django-pipeline==1.5.1
 whitenoise==2.0.1
-gunicorn
+dj_database_url
