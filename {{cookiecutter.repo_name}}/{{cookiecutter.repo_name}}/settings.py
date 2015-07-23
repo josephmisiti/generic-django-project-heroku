@@ -46,9 +46,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = '{{ cookiecutter.project_name }}.urls'
+ROOT_URLCONF = '{{cookiecutter.project_name}}.urls'
 
-WSGI_APPLICATION = '{{ cookiecutter.project_name }}.wsgi.application'
+WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 
 
 # Database
@@ -96,12 +96,9 @@ AUTH_USER_MODEL = 'accounts.User'
 # configs
 from .pipeline_configs import *
 
-try:
-    from local_settings import *
-except Exception:
-    pass
 
 # default db settings
 DATABASES={}
 DATABASES['default'] =  dj_database_url.config()
 
+DEBUG=False

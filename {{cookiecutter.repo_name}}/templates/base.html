@@ -1,27 +1,30 @@
-{% raw %}
+{% load pipeline %}
+
 <!DOCTYPE html>
 <html lang="en">
 	{% block header %}
 	<head>
 		<title>
-			{% block title %}
-			
-			{% endblock %}
+			{% block title %} {% endblock %}
 		</title>
 		
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<meta name="description" content="FETCHER is a Public Relations and Event Management Tool designed for professionals. Offering solutions for thoughtful PR engagement while utilizing unparalleled machine learning to make planning, managing and tracking your events easy, fun and seamless."/>
+		<meta name="description" content=""/>
 		
-		<meta name="keywords" content="Fetcher, Get Fetcher, Get Fetch, Fetcher NYC, Fetcher New York City, Fetcher Public Relations Software, PR Software, NYC PR Software, Event Planning Software, Fetcher Event Planning Software, Guest List Management, Event Management Software, Party Management Software"/>
+		<meta name="keywords" content=""/>
 		
-		<link rel="icon" type="image/png" href="/media/images/fetcher.ico"/>
+		<link rel="icon" type="image/png" href="/media/images/barforcast.ico"/>
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		
-		{% load jammit_tags %}
-		{% include_stylesheets "common" %}
-		{% include_javascripts "common" %}
+		{% stylesheet "global" %}
+		{% javascript "global" %}		
+
+		{% block header_extras %} {% endblock %}
 
 	</head>
 	{% endblock %}
@@ -30,4 +33,3 @@
 		{% block content %} {% endblock %}
 	</body>
 </html>
-{% endraw %}
