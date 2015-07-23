@@ -93,7 +93,7 @@ PIPELINE_DISABLE_WRAPPER = True
 AUTH_USER_MODEL = 'accounts.User'
 
 # configs
-from .pipeline_config import *
+from .pipeline_configs import *
 
 try:
     from local_settings import *
