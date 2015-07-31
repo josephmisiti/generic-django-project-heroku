@@ -1,4 +1,5 @@
 import os
+import sys
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -119,6 +120,52 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.MultiPartRenderer',
         'rest_framework.renderers.JSONRenderer'
     ),
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters':
+	{
+        'verbose':
+		{
+            'format': '[%(asctime)s][%(levelname)s] | %(message)s',
+            'datefmt': '%b %d %H:%M:%S'
+        },
+        'simple':
+		{
+            'format': '[%(asctime)s][%(levelname)s] %(name)s | %(message)s'
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'console' : {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins','console'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
 }
         
 if not DEBUG:
