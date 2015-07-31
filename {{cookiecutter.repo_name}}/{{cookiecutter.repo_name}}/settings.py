@@ -97,8 +97,42 @@ AUTH_USER_MODEL = 'accounts.User'
 from .pipeline_configs import *
 
 
-# default db settings
-DATABASES={}
-DATABASES['default'] =  dj_database_url.config()
-
-DEBUG=False
+try:
+    from local_settings import *
+except ImportError:
+    pass
+    
+	
+REST_FRAMEWORK = {
+    'PAGINATE_BY_PARAM': 'limit',
+    'MAX_PAGINATE_BY': 50,
+    'SEARCH_PARAM': 'filter',
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'TEST_REQUEST_RENDERER_CLASSES': (
+        'rest_framework.renderers.MultiPartRenderer',
+        'rest_framework.renderers.JSONRenderer'
+    ),
+}
+        
+if not DEBUG:
+    # default db settings
+    DATABASES={}
+    DATABASES['default'] =  dj_database_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE'	: 'django.db.backends.postgresql_psycopg2',
+            'NAME'		: '{{cookiecutter.project_name}}',
+            'USER'		: '',
+            'PASSWORD'	: '',
+            'HOST'		: '127.0.0.1',
+            'PORT'		: '5432',
+        }
+    }
